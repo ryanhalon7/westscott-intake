@@ -1,0 +1,18 @@
+{
+  "name": "westscott-transcriber",
+  "main": "index.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "ai": { "binding": "AI" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "westscott-intake-db", "database_id": "940d0a31-48b1-41ce-af86-99c4ed24be25" }
+  ],
+  "r2_buckets": [
+    { "binding": "BUCKET", "bucket_name": "westscott-intake-files" }
+  ],
+  "workflows": [
+    { "name": "westscott-transcribe", "binding": "TRANSCRIBE", "class_name": "TranscribeSubmission" }
+  ]
+}

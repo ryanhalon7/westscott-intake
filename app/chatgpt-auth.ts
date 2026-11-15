@@ -28,7 +28,7 @@ async function getKeys(teamDomain: string, force = false): Promise<Jwk[]> {
   return keys;
 }
 
-function b64url(s: string): Uint8Array {
+function b64url(s: string): Uint8Array<ArrayBuffer> {
   const b = atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
   return Uint8Array.from(b, (c) => c.charCodeAt(0));
 }

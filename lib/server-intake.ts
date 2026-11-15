@@ -19,3 +19,8 @@ export function failure(error:unknown){
   console.error('Intake operation failed:',error instanceof Error?error.name:'Unknown error');
   return Response.json({error:'This step could not finish. Your stored files are safe; please retry.'},{status:500});
 }
+export async function startTranscription(id:string){
+  if(!env.TRANSCRIBE)throw new Error('Transcription is not configured.');
+  // Unique instance per attempt so retries are allowed.
+  await env.TRANSCRIBE.create({id:`${id}-${Date.now()}`,params:{submissionId:id}});
+}

@@ -16,6 +16,9 @@
   "d1_databases": [
     { "binding": "DB", "database_name": "westscott-intake-db", "database_id": "940d0a31-48b1-41ce-af86-99c4ed24be25" }
   ],
+  "workflows": [
+    { "name": "westscott-transcribe", "binding": "TRANSCRIBE", "class_name": "TranscribeSubmission", "script_name": "westscott-transcriber" }
+  ],
   "r2_buckets": [
     { "binding": "BUCKET", "bucket_name": "westscott-intake-files" }
   ]
