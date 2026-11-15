@@ -22,5 +22,10 @@ export function failure(error:unknown){
 export async function startTranscription(id:string){
   if(!env.TRANSCRIBE)throw new Error('Transcription is not configured.');
   // Unique instance per attempt so retries are allowed.
-  await env.TRANSCRIBE.create({id:`${id}-${Date.now()}`,params:{submissionId:id}});
+  let last:unknown;
+  for(let attempt=0;attempt<3;attempt++){
+    try{await env.TRANSCRIBE.create({id:`${id}-${Date.now()}`,params:{submissionId:id}});return;}
+    catch(e){last=e;await new Promise(r=>setTimeout(r,500*(attempt+1)));}
+  }
+  throw last;
 }
