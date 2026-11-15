@@ -1,0 +1,22 @@
+{
+  "name": "westscott-intake",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "no_bundle": true,
+  "rules": [{ "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }],
+  "assets": { "directory": "dist/client" },
+  "workers_dev": true,
+  "vars": {
+    "ACCESS_TEAM_DOMAIN": "broad-term-5d73.cloudflareaccess.com",
+    "ACCESS_AUD": "f5421b4ad6bb69bd6d5dffdbc54a276fe7bc98e0633bea10f9bbe7bff7b5887a"
+  },
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "westscott-intake-db", "database_id": "940d0a31-48b1-41ce-af86-99c4ed24be25" }
+  ],
+  "r2_buckets": [
+    { "binding": "BUCKET", "bucket_name": "westscott-intake-files" }
+  ]
+}

@@ -1,5 +1,11 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { env } from "cloudflare:workers";
+
+// Auth is provided by Cloudflare Access. In production we verify the signed
+// Cf-Access-Jwt-Assertion token (never trust plain headers). In local dev the
+// starter's simulated oai-authenticated-user-* headers are still accepted.
+// File keeps its original name/exports so existing imports continue to work.
 
 export type ChatGPTUser = {
   userId: string;
@@ -8,83 +14,92 @@ export type ChatGPTUser = {
   fullName: string | null;
 };
 
-const USER_ID_HEADER = "oai-authenticated-user-id";
-const USER_EMAIL_HEADER = "oai-authenticated-user-email";
-const USER_FULL_NAME_HEADER = "oai-authenticated-user-full-name";
-const USER_FULL_NAME_ENCODING_HEADER =
-  "oai-authenticated-user-full-name-encoding";
-const PERCENT_ENCODED_UTF8 = "percent-encoded-utf-8";
-const SIGN_IN_PATH = "/signin-with-chatgpt";
-const SIGN_OUT_PATH = "/signout-with-chatgpt";
-const CALLBACK_PATH = "/callback";
+type AccessEnv = { ACCESS_TEAM_DOMAIN?: string; ACCESS_AUD?: string };
+type Jwk = JsonWebKey & { kid?: string };
+
+let jwksCache: { at: number; keys: Jwk[] } | null = null;
+
+async function getKeys(teamDomain: string, force = false): Promise<Jwk[]> {
+  if (!force && jwksCache && Date.now() - jwksCache.at < 3_600_000) return jwksCache.keys;
+  const res = await fetch(`https://${teamDomain}/cdn-cgi/access/certs`);
+  if (!res.ok) throw new Error("Unable to fetch Access certs");
+  const { keys } = (await res.json()) as { keys: Jwk[] };
+  jwksCache = { at: Date.now(), keys };
+  return keys;
+}
+
+function b64url(s: string): Uint8Array {
+  const b = atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+  return Uint8Array.from(b, (c) => c.charCodeAt(0));
+}
+
+async function verifyAccessJwt(token: string, teamDomain: string, aud: string) {
+  const [h, p, s] = token.split(".");
+  if (!h || !p || !s) return null;
+  const header = JSON.parse(new TextDecoder().decode(b64url(h)));
+  if (header.alg !== "RS256") return null;
+  let key = (await getKeys(teamDomain)).find((k) => k.kid === header.kid);
+  if (!key) key = (await getKeys(teamDomain, true)).find((k) => k.kid === header.kid);
+  if (!key) return null;
+  const cryptoKey = await crypto.subtle.importKey(
+    "jwk", key, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"],
+  );
+  const ok = await crypto.subtle.verify(
+    "RSASSA-PKCS1-v1_5", cryptoKey, b64url(s), new TextEncoder().encode(`${h}.${p}`),
+  );
+  if (!ok) return null;
+  const claims = JSON.parse(new TextDecoder().decode(b64url(p)));
+  const auds: string[] = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
+  if (!auds.includes(aud)) return null;
+  if (claims.iss !== `https://${teamDomain}`) return null;
+  if (typeof claims.exp !== "number" || claims.exp * 1000 < Date.now()) return null;
+  return claims as { sub?: string; email?: string };
+}
 
 export async function getChatGPTUser(): Promise<ChatGPTUser | null> {
   const requestHeaders = await headers();
-  const userId = requestHeaders.get(USER_ID_HEADER);
-  const email = requestHeaders.get(USER_EMAIL_HEADER);
+  const cfg = env as unknown as AccessEnv;
+
+  if (cfg.ACCESS_TEAM_DOMAIN && cfg.ACCESS_AUD) {
+    const token = requestHeaders.get("cf-access-jwt-assertion");
+    if (!token) return null;
+    try {
+      const claims = await verifyAccessJwt(token, cfg.ACCESS_TEAM_DOMAIN, cfg.ACCESS_AUD);
+      if (!claims?.email) return null;
+      return {
+        userId: claims.sub ?? claims.email,
+        displayName: claims.email,
+        email: claims.email,
+        fullName: null,
+      };
+    } catch {
+      return null;
+    }
+  }
+
+  // Not configured: only allow the simulated dev headers outside production.
+  if (process.env.NODE_ENV === "production") return null;
+  const userId = requestHeaders.get("oai-authenticated-user-id");
+  const email = requestHeaders.get("oai-authenticated-user-email");
   if (!userId || !email) return null;
-
-  const encodedFullName = requestHeaders.get(USER_FULL_NAME_HEADER);
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get(USER_FULL_NAME_ENCODING_HEADER) === PERCENT_ENCODED_UTF8
-      ? safeDecodeURIComponent(encodedFullName)
-      : null;
-
-  return {
-    userId,
-    displayName: fullName ?? email,
-    email,
-    fullName,
-  };
+  return { userId, displayName: email, email, fullName: null };
 }
 
-export async function requireChatGPTUser(
-  returnTo: string,
-): Promise<ChatGPTUser> {
+export async function requireChatGPTUser(returnTo: string): Promise<ChatGPTUser> {
   const user = await getChatGPTUser();
   if (user) return user;
-
   redirect(chatGPTSignInPath(returnTo));
 }
 
 export function chatGPTSignInPath(returnTo: string): string {
-  const safeReturnTo = safeRelativeReturnPath(returnTo);
-  return `${SIGN_IN_PATH}?return_to=${encodeURIComponent(safeReturnTo)}`;
+  // Access normally intercepts before this is reached.
+  return process.env.NODE_ENV === "production"
+    ? "/cdn-cgi/access/login"
+    : `/signin-with-chatgpt?return_to=${encodeURIComponent(returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/")}`;
 }
 
 export function chatGPTSignOutPath(returnTo = "/"): string {
-  const safeReturnTo = safeRelativeReturnPath(returnTo);
-  return `${SIGN_OUT_PATH}?return_to=${encodeURIComponent(safeReturnTo)}`;
-}
-
-function safeRelativeReturnPath(value: string): string {
-  if (!value.startsWith("/") || value.startsWith("//")) return "/";
-
-  let url: URL;
-  try {
-    url = new URL(value, "https://app.local");
-  } catch {
-    return "/";
-  }
-  if (url.origin !== "https://app.local") return "/";
-  if (isReservedAuthPath(url.pathname)) return "/";
-
-  return `${url.pathname}${url.search}${url.hash}`;
-}
-
-function isReservedAuthPath(pathname: string): boolean {
-  return (
-    pathname === SIGN_IN_PATH ||
-    pathname === SIGN_OUT_PATH ||
-    pathname === CALLBACK_PATH
-  );
-}
-
-function safeDecodeURIComponent(value: string): string | null {
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return null;
-  }
+  return process.env.NODE_ENV === "production"
+    ? "/cdn-cgi/access/logout"
+    : `/signout-with-chatgpt?return_to=${encodeURIComponent(returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/")}`;
 }
