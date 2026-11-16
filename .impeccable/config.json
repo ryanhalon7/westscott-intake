@@ -1,0 +1,15 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "roboto",
+        "createdAt": "2026-11-16T00:36:02.955Z",
+        "reason": "user confirmed: chose 'Same brand, app-clean' (Roboto Condensed headings + Roboto body); Roboto is westscottinc.com's own brand font"
+      }
+    ]
+  }
+}
