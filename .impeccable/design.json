@@ -1,21 +1,24 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-15T20:00:00Z",
+  "generatedAt": "2026-11-15T22:00:00Z",
   "title": "Design System: WestScott Project Intake",
   "extensions": {
     "colorMeta": {
       "band-navy": { "role": "primary", "displayName": "Site Band Navy", "canonical": "oklch(36.5% 0.092 253.7)", "tonalRamp": ["#020b19", "#0d2642", "#1c436f", "#3a6394", "#5b85b8", "#7ea8dc", "#aeccf1", "#dff0ff"] },
       "logo-blue": { "role": "primary", "displayName": "Logo Ring Blue", "canonical": "oklch(42.1% 0.130 255.3)", "tonalRamp": ["#000b1f", "#00244e", "#014082", "#2661a9", "#4984ce", "#6ea7f2", "#a3ccff", "#d9f1ff"] },
       "logo-blue-deep": { "role": "primary", "displayName": "Deep Logo Blue", "canonical": "#0a3d76" },
+      "photo-fade-navy": { "role": "primary", "displayName": "Photo Fade Navy", "canonical": "rgb(22 63 109 / .55)" },
       "heading-slate": { "role": "secondary", "displayName": "Heading Slate", "canonical": "oklch(43.5% 0.067 239.3)", "tonalRamp": ["#030c15", "#0d2838", "#1d4660", "#3b6683", "#5c88a6", "#80abc9", "#afcee4", "#e0f1fe"] },
       "signal-red": { "role": "tertiary", "displayName": "Signal Red", "canonical": "oklch(53.0% 0.207 27.0)", "tonalRamp": ["#230000", "#560000", "#8f0000", "#ba000c", "#e43a36", "#ff675c", "#ffa497", "#ffdbd2"] },
       "signal-red-wash": { "role": "tertiary", "displayName": "Red Wash", "canonical": "#fdeeee" },
       "signal-red-rule": { "role": "tertiary", "displayName": "Red Rule", "canonical": "#f2c4c6" },
       "signal-red-ink": { "role": "tertiary", "displayName": "Deep Red Ink", "canonical": "#8f1015" },
+      "pulse-red": { "role": "tertiary", "displayName": "Pulse Red", "canonical": "rgb(200 21 28 / .35)" },
       "ok-green": { "role": "tertiary", "displayName": "Receipt Green", "canonical": "oklch(46.9% 0.108 151.4)", "tonalRamp": ["#001003", "#002e11", "#005123", "#277241", "#4c9561", "#72b884", "#a7d7b2", "#dbf7e1"] },
       "ok-wash": { "role": "tertiary", "displayName": "Receipt Wash", "canonical": "#e8f3ec" },
       "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(25.4% 0.011 254.0)", "tonalRamp": ["#0a0b0d", "#232529", "#3e4248", "#5d6268", "#7e8389", "#a0a5ac", "#c6c9ce", "#eceff1"] },
       "muted-steel": { "role": "neutral", "displayName": "Muted Steel", "canonical": "oklch(47.5% 0.021 253.5)", "tonalRamp": ["#090b0f", "#20262c", "#3b434d", "#59626d", "#7a838f", "#9ca6b2", "#c3cad2", "#ebeff4"] },
+      "placeholder-gray": { "role": "neutral", "displayName": "Placeholder Gray", "canonical": "#6b7480" },
       "ground": { "role": "neutral", "displayName": "Cool Ground", "canonical": "oklch(95.7% 0.005 247.9)", "tonalRamp": ["#0a0b0c", "#242527", "#404245", "#5f6164", "#808385", "#a3a5a8", "#c7c9cb", "#edeef0"] },
       "surface": { "role": "neutral", "displayName": "Sheet White", "canonical": "#ffffff" },
       "tint": { "role": "neutral", "displayName": "Tint", "canonical": "oklch(97.5% 0.003 247.9)", "tonalRamp": ["#0b0b0c", "#242526", "#414244", "#606163", "#818284", "#a3a5a7", "#c8c9ca", "#eeeeef"] },
@@ -23,24 +26,42 @@
       "rule-strong": { "role": "neutral", "displayName": "Strong Rule", "canonical": "#b7c0ca" },
       "notice-wash": { "role": "neutral", "displayName": "Notice Wash", "canonical": "#e6eef7" },
       "notice-rule": { "role": "neutral", "displayName": "Notice Rule", "canonical": "#c5d6e9" },
+      "notice-ink": { "role": "neutral", "displayName": "Notice Ink", "canonical": "#24384d" },
       "badge-wash": { "role": "neutral", "displayName": "Badge Wash", "canonical": "#e3ebf4" },
-      "header-text-soft": { "role": "neutral", "displayName": "Band Soft White", "canonical": "#e3ebf3" }
+      "picker-hover-wash": { "role": "neutral", "displayName": "Picker Hover Wash", "canonical": "#eef4fb" },
+      "selection-wash": { "role": "neutral", "displayName": "Selection Wash", "canonical": "#c9dcf2" },
+      "photo-placeholder": { "role": "neutral", "displayName": "Photo Placeholder", "canonical": "#e3e8ee" },
+      "photo-scrim": { "role": "neutral", "displayName": "Photo Scrim", "canonical": "rgb(31 35 40 / .78)" },
+      "header-text-soft": { "role": "neutral", "displayName": "Band Soft White", "canonical": "#e3ebf3" },
+      "band-hover": { "role": "neutral", "displayName": "Band Hover", "canonical": "rgb(255 255 255 / .1)" },
+      "badge-shadow-ink": { "role": "neutral", "displayName": "Badge Shadow Ink", "canonical": "rgb(15 32 56 / .25)" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Page headlines, uppercase condensed. 36px under 600px; review screens 38px (32px mobile)." },
+      "display": { "displayName": "Display", "purpose": "Page titles and the sign-in / set-password title, uppercase condensed." },
+      "display-mobile": { "displayName": "Display (mobile)", "purpose": "Display under 600px on working screens and under 800px on the sign-in threshold." },
+      "display-detail": { "displayName": "Display Detail", "purpose": "Project title on the submission detail page." },
+      "display-detail-mobile": { "displayName": "Display Detail (mobile)", "purpose": "Detail title under 600px." },
       "headline": { "displayName": "Headline", "purpose": "Receipt confirmation heading only." },
-      "title": { "displayName": "Title", "purpose": "Card headings beside a step number. 20px mobile." },
-      "subtitle": { "displayName": "Subtitle", "purpose": "Uppercase slate subheadings inside a card." },
-      "button": { "displayName": "Button", "purpose": "Full-width primary send action." },
-      "label": { "displayName": "Label", "purpose": "Nav links, text-links, field labels, compact buttons." },
-      "label-small": { "displayName": "Label Small", "purpose": "Section hints and status badges." },
-      "body-lead": { "displayName": "Body Lead", "purpose": "Intro line under a headline, max 52ch." },
-      "body": { "displayName": "Body", "purpose": "Default reading text; prompts 15px/1.65 at 60ch, source text 16px/1.7 at 68ch." },
-      "body-small": { "displayName": "Body Small", "purpose": "Captions, file names, footer, references; tabular numerals for counters." }
+      "title": { "displayName": "Title", "purpose": "Card headings; a muted 500 count may follow." },
+      "title-mobile": { "displayName": "Title (mobile)", "purpose": "Card headings under 600px." },
+      "button": { "displayName": "Button", "purpose": "Full-width primary action: Send project, Sign in, Save password." },
+      "brand-title": { "displayName": "Brand Title", "purpose": "\"Project intake\" beside the logo in the band; 15px under 600px." },
+      "label-large": { "displayName": "Label Large", "purpose": "Text-links with a leading icon." },
+      "label": { "displayName": "Label", "purpose": "Field labels and compact buttons at 700; nav items and back link at 500 (nav 13px under 600px)." },
+      "label-small": { "displayName": "Label Small", "purpose": "Status badges." },
+      "input": { "displayName": "Input", "purpose": "Typed text in the 52px sign-in and password fields." },
+      "body": { "displayName": "Body", "purpose": "Default text, recorder status, list-row titles, sign-in subline (15px under 800px); source text 16px/1.7 at 68ch." },
+      "body-prompt": { "displayName": "Body Prompt", "purpose": "One muted prompt line under a card title (max 60ch); notices, errors and meta row at 15px." },
+      "caption": { "displayName": "Caption", "purpose": "Recorder caption, upload progress, sign-in help line." },
+      "body-small": { "displayName": "Body Small", "purpose": "Dates, keep-open line, HEIC tile label; tabular numerals for counters." }
     },
     "shadows": [
       { "name": "recording-pulse", "value": "0 0 0 0 rgb(200 21 28 / .35) -> 0 0 0 14px rgb(200 21 28 / 0)", "purpose": "Animated ring on the live record button (1.6s ease-out infinite); off under reduced motion. State signal, not elevation." },
-      { "name": "nav-current", "value": "inset 0 -2px 0 #fff", "purpose": "2px white underline on the current page link in the header band." }
+      { "name": "nav-current", "value": "inset 0 -2px 0 #fff", "purpose": "2px white underline on the current page link in the header band." },
+      { "name": "logo-badge-lift", "value": "0 2px 10px rgb(15 32 56 / .25)", "purpose": "Exception: the one deliberate shadow on content. Only the 72px circular logo badge overlapping the sign-in photo band under 800px." }
+    ],
+    "gradients": [
+      { "name": "photo-fade", "value": "linear-gradient(180deg, rgb(22 63 109 / 0) 55%, rgb(22 63 109 / .55))", "purpose": "Navy fade over the bottom half of the sign-in photo." }
     ],
     "motion": [
       { "name": "state-transition", "value": "0.18s ease-out", "purpose": "Background, border and transform changes on buttons, picker and rows." },
@@ -48,17 +69,24 @@
       { "name": "pulse", "value": "1.6s ease-out infinite", "purpose": "Recording pulse ring; disabled under prefers-reduced-motion." }
     ],
     "breakpoints": [
-      { "name": "mobile", "value": "600px" }
+      { "name": "mobile", "value": "600px", "purpose": "Working screens tighten; New link and sign-out label hide." },
+      { "name": "auth-stack", "value": "800px", "purpose": "Sign-in split stacks into photo band over panel with overlapping logo badge." }
     ],
     "layout": {
       "chromeMaxWidth": "1100px",
       "contentMaxWidth": "720px",
-      "minTapTarget": "44px"
+      "authColumns": "minmax(0,1.15fr) minmax(380px,1fr)",
+      "authInnerMaxWidth": "380px",
+      "authPhotoBandMobile": "minmax(120px, 26dvh)",
+      "authPhotoPosition": "40% 50%",
+      "authPhotoSource": "public/login.avif (public/login.webp fallback)",
+      "minTapTarget": "44px",
+      "inputHeight": "52px"
     }
   },
   "components": [
     {
-      "name": "Primary Send Button",
+      "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
       "description": "Full-width 60px logo-blue action at the end of a flow; label left, arrow right.",
@@ -82,44 +110,60 @@
       "css": ".ds-text-link{display:inline-flex;align-items:center;gap:8px;border:0;background:none;padding:10px 0;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#0d4c92;cursor:pointer}.ds-text-link:hover{text-decoration:underline;text-underline-offset:4px}.ds-text-link:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}"
     },
     {
+      "name": "Password Field",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Labelled 52px text input at 17px with a 44px show-password reveal inside the right edge.",
+      "html": "<div class=\"ds-auth-field\"><label for=\"ds-pw\">Password</label><div class=\"ds-input-wrap\"><input id=\"ds-pw\" type=\"password\" value=\"hunter2hunter\"><button type=\"button\" class=\"ds-reveal\" aria-label=\"Show password\" aria-pressed=\"false\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></button></div></div>",
+      "css": ".ds-auth-field label{display:block;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;color:#1f2328}.ds-input-wrap{position:relative}.ds-auth-field input{width:100%;min-height:52px;padding:0 52px 0 14px;background:#fff;border:1px solid #b7c0ca;border-radius:4px;font-family:Roboto,system-ui,sans-serif;font-size:17px;color:#1f2328;box-sizing:border-box}.ds-auth-field input:focus{border-color:#0d4c92;outline:2px solid #0d4c92;outline-offset:0}.ds-reveal{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;height:44px;display:grid;place-items:center;border:0;background:none;color:#545d68;border-radius:4px;cursor:pointer}.ds-reveal:hover{color:#0d4c92}.ds-reveal:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}"
+    },
+    {
       "name": "Project Notes Field",
       "kind": "input",
       "refersTo": "textarea",
-      "description": "Labelled white textarea with strong rule and blue focus.",
-      "html": "<div class=\"ds-field\"><label for=\"ds-notes\">Project notes</label><textarea id=\"ds-notes\" rows=\"4\" placeholder=\"Project name, location, scope of work, and completion date…\"></textarea><small>Only share details you want included in the project story.</small></div>",
-      "css": ".ds-field label{display:block;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;color:#1f2328}.ds-field textarea{width:100%;min-height:140px;padding:14px;background:#fff;border:1px solid #b7c0ca;border-radius:4px;font-family:Roboto,system-ui,sans-serif;font-size:16px;line-height:1.6;color:#1f2328;resize:vertical}.ds-field textarea::placeholder{color:#6b7480}.ds-field textarea:focus{border-color:#0d4c92;outline:2px solid #0d4c92;outline-offset:0}.ds-field small{display:block;font-family:Roboto,system-ui,sans-serif;font-size:13px;color:#545d68;margin-top:6px}"
+      "description": "Labelled white textarea with strong rule and blue focus; no helper text.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-notes\">Project notes</label><textarea id=\"ds-notes\" rows=\"4\" placeholder=\"Project name, location, scope of work, and completion date…\"></textarea></div>",
+      "css": ".ds-field label{display:block;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;color:#1f2328}.ds-field textarea{width:100%;min-height:140px;padding:14px;background:#fff;border:1px solid #b7c0ca;border-radius:4px;font-family:Roboto,system-ui,sans-serif;font-size:16px;line-height:1.6;color:#1f2328;resize:vertical}.ds-field textarea::placeholder{color:#6b7480}.ds-field textarea:focus{border-color:#0d4c92;outline:2px solid #0d4c92;outline-offset:0}"
     },
     {
       "name": "Header Band",
       "kind": "nav",
       "refersTo": "header-band",
-      "description": "Navy band with circular logo, app title and uppercase nav; current page underlined in white.",
-      "html": "<header class=\"ds-band\"><div class=\"ds-band-mark\"><span class=\"ds-band-logo\"></span><span><strong>Project intake</strong><small>WestScott Construction</small></span></div><nav><a href=\"#\">New</a><a href=\"#\" aria-current=\"page\">Submissions</a></nav></header>",
-      "css": ".ds-band{display:flex;align-items:center;gap:14px;padding:12px 24px;background:#163f6d;color:#fff}.ds-band-mark{display:flex;align-items:center;gap:12px}.ds-band-logo{width:52px;height:52px;border-radius:50%;background:#fff;border:4px solid #0d4c92}.ds-band-mark strong{display:block;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1}.ds-band-mark small{display:block;font-family:Roboto,sans-serif;font-size:12px;color:#c4d3e3;letter-spacing:.04em;margin-top:2px}.ds-band nav{margin-left:auto;display:flex;gap:4px}.ds-band nav a{display:inline-flex;align-items:center;min-height:44px;padding:10px 12px;border-radius:4px;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#e3ebf3;text-decoration:none}.ds-band nav a:hover{background:rgb(255 255 255 / .1);color:#fff}.ds-band nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 #fff}.ds-band nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}"
+      "description": "Navy band with circular logo and app title; uppercase nav with sign out as a POST button styled like the links; current page underlined in white.",
+      "html": "<header class=\"ds-band\"><div class=\"ds-band-mark\"><span class=\"ds-band-logo\"></span><strong>Project intake</strong></div><nav><a href=\"#\">New</a><a href=\"#\" aria-current=\"page\">Submissions</a><form><button type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4\"/><path d=\"m16 17 5-5-5-5\"/><path d=\"M21 12H9\"/></svg>Sign out</button></form></nav></header>",
+      "css": ".ds-band{display:flex;align-items:center;gap:14px;padding:12px 24px;background:#163f6d;color:#fff}.ds-band-mark{display:flex;align-items:center;gap:12px}.ds-band-logo{width:52px;height:52px;border-radius:50%;background:#fff;border:4px solid #0d4c92;box-sizing:border-box}.ds-band-mark strong{display:block;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1}.ds-band nav{margin-left:auto;display:flex;gap:4px}.ds-band nav form{display:contents}.ds-band nav a,.ds-band nav button{border:0;background:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:10px 12px;border-radius:4px;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#e3ebf3;text-decoration:none;cursor:pointer}.ds-band nav a:hover,.ds-band nav button:hover{background:rgb(255 255 255 / .1);color:#fff}.ds-band nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 #fff}.ds-band nav a:focus-visible,.ds-band nav button:focus-visible{outline:3px solid #fff;outline-offset:3px}"
     },
     {
-      "name": "Step Card",
+      "name": "Section Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "White sheet with 1px rule, numbered slate step tile, uppercase title and right hint.",
-      "html": "<section class=\"ds-card\"><div class=\"ds-card-head\"><span class=\"ds-step\">1</span><h2>Tell the story</h2><span class=\"ds-hint\">Voice or text</span></div><p>Tell us about the project: its name and location, and what your team completed.</p></section>",
-      "css": ".ds-card{background:#fff;border:1px solid #d3d9e0;border-radius:6px;padding:28px;font-family:Roboto,sans-serif;color:#1f2328}.ds-card-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}.ds-step{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:4px;background:#2b5672;color:#fff;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15px}.ds-card h2{margin:0;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-size:22px;font-weight:700;letter-spacing:.01em;text-transform:uppercase}.ds-hint{margin-left:auto;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#545d68}.ds-card p{margin:0;font-size:15px;line-height:1.65;color:#545d68;max-width:60ch}"
+      "description": "White sheet with 1px rule, uppercase title, optional muted count and one prompt line. No step numbers or hints.",
+      "html": "<section class=\"ds-card\"><h2>About the project</h2><p>Name, location, what you did, any challenges, and when it finished.</p></section>",
+      "css": ".ds-card{background:#fff;border:1px solid #d3d9e0;border-radius:6px;padding:28px;font-family:Roboto,sans-serif;color:#1f2328}.ds-card h2{margin:0 0 6px;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-size:22px;font-weight:700;letter-spacing:.01em;text-transform:uppercase}.ds-card p{margin:0;font-size:15px;line-height:1.6;color:#545d68;max-width:60ch}"
     },
     {
       "name": "Voice Recorder",
       "kind": "custom",
       "refersTo": "record-button",
-      "description": "Signature control: tint well with a 68px blue record button; turns red with a pulse ring while live.",
-      "html": "<div class=\"ds-rec\"><button class=\"ds-mic\" aria-label=\"Record\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z\"/><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"/><line x1=\"12\" x2=\"12\" y1=\"19\" y2=\"22\"/></svg></button><div><strong>Record project details</strong><p>A quick voice note is all it takes. Up to 5 minutes.</p></div></div><div class=\"ds-rec ds-rec-live\"><button class=\"ds-mic\" aria-label=\"Stop\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/></svg></button><div><strong>Recording your story…</strong><p>0:42 · Tap to stop</p></div></div>",
-      "css": ".ds-rec{display:flex;align-items:center;gap:18px;padding:18px;margin-bottom:12px;background:#f5f7f9;border:1px solid #d3d9e0;border-radius:6px;font-family:Roboto,sans-serif;color:#1f2328}.ds-mic{display:grid;place-items:center;flex-shrink:0;width:68px;height:68px;border:0;border-radius:50%;background:#0d4c92;color:#fff;cursor:pointer;transition:background-color .18s ease-out,transform .18s ease-out}.ds-mic:hover{background:#0a3d76}.ds-mic:active{transform:scale(.96)}.ds-mic:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}.ds-rec strong{display:block;font-size:16px;font-weight:500}.ds-rec p{margin:4px 0 0;font-size:14px;color:#545d68;font-variant-numeric:tabular-nums}.ds-rec-live{background:#fdeeee;border-color:#f2c4c6}.ds-rec-live .ds-mic{background:#c8151c;animation:ds-pulse 1.6s ease-out infinite}.ds-rec-live strong{color:#c8151c}@keyframes ds-pulse{0%{box-shadow:0 0 0 0 rgb(200 21 28 / .35)}100%{box-shadow:0 0 0 14px rgb(200 21 28 / 0)}}@media (prefers-reduced-motion:reduce){.ds-rec-live .ds-mic{animation:none}}"
+      "description": "Signature control, no well: a 68px blue record button beside status and caption; turns red with a pulse ring while live.",
+      "html": "<div class=\"ds-rec\"><button class=\"ds-mic\" aria-label=\"Record project details\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z\"/><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"/><line x1=\"12\" x2=\"12\" y1=\"19\" y2=\"22\"/></svg></button><div><strong>Tap to record</strong><p>Up to 5 minutes</p></div></div><div class=\"ds-rec ds-rec-live\"><button class=\"ds-mic\" aria-label=\"Stop recording\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/></svg></button><div><strong>Recording</strong><p>0:42 · tap to stop</p></div></div>",
+      "css": ".ds-rec{display:flex;align-items:center;gap:18px;padding:4px 0;font-family:Roboto,sans-serif;color:#1f2328}.ds-rec+.ds-rec{margin-top:16px}.ds-mic{display:grid;place-items:center;flex-shrink:0;width:68px;height:68px;border:0;border-radius:50%;background:#0d4c92;color:#fff;cursor:pointer;transition:background-color .18s ease-out,transform .18s ease-out}.ds-mic:hover{background:#0a3d76}.ds-mic:active{transform:scale(.96)}.ds-mic:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}.ds-rec strong{display:block;font-size:16px;font-weight:500}.ds-rec p{margin:4px 0 0;font-size:14px;color:#545d68;font-variant-numeric:tabular-nums}.ds-rec-live .ds-mic{background:#c8151c;animation:ds-pulse 1.6s ease-out infinite}.ds-rec-live strong{color:#c8151c}@keyframes ds-pulse{0%{box-shadow:0 0 0 0 rgb(200 21 28 / .35)}100%{box-shadow:0 0 0 14px rgb(200 21 28 / 0)}}@media (prefers-reduced-motion:reduce){.ds-rec-live .ds-mic{animation:none}}"
     },
     {
       "name": "Photo Picker",
       "kind": "custom",
       "refersTo": "card",
       "description": "Dashed drop zone on tint with a blue plus disc and condensed title.",
-      "html": "<button class=\"ds-picker\"><span class=\"ds-plus\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span><strong>Choose project photos</strong><small>JPG, PNG, WebP or HEIC · Up to 30 photos · 20 MB each</small></button>",
-      "css": ".ds-picker{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;padding:28px 14px;background:#f5f7f9;border:2px dashed #b7c0ca;border-radius:6px;cursor:pointer;transition:border-color .18s ease-out,background-color .18s ease-out}.ds-picker:hover{border-color:#0d4c92;background:#eef4fb}.ds-picker:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}.ds-plus{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#0d4c92;color:#fff}.ds-picker strong{font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em;text-transform:uppercase;color:#1f2328}.ds-picker small{font-family:Roboto,sans-serif;font-size:13px;color:#545d68}"
+      "html": "<button class=\"ds-picker\"><span class=\"ds-plus\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span><strong>Add photos</strong></button>",
+      "css": ".ds-picker{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;padding:28px 14px;background:#f5f7f9;border:2px dashed #b7c0ca;border-radius:6px;cursor:pointer;transition:border-color .18s ease-out,background-color .18s ease-out}.ds-picker:hover{border-color:#0d4c92;background:#eef4fb}.ds-picker:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}.ds-plus{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#0d4c92;color:#fff}.ds-picker strong{font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:16px;letter-spacing:.05em;text-transform:uppercase;color:#1f2328}"
+    },
+    {
+      "name": "Sign-in Threshold",
+      "kind": "custom",
+      "refersTo": "auth-panel",
+      "description": "Photo left, white panel right; under 800px a photo band on top with the 72px logo badge overlapping it (the one shadowed element).",
+      "html": "<main class=\"ds-auth\"><div class=\"ds-auth-photo\"></div><section class=\"ds-auth-panel\"><div class=\"ds-auth-inner\"><span class=\"ds-auth-logo\"></span><h1>Sign in</h1><p class=\"ds-auth-sub\">Project intake for the WestScott team.</p><button class=\"ds-auth-btn\">Sign in <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button><p class=\"ds-auth-help\">Forgot your password? Ask the office to reset it.</p></div></section></main>",
+      "css": ".ds-auth{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,1fr);min-height:420px;background:#fff;font-family:Roboto,sans-serif;color:#1f2328}.ds-auth-photo{position:relative;background:#163f6d linear-gradient(135deg,#3a6394,#163f6d)}.ds-auth-photo::after{content:\"\";position:absolute;inset:0;background:linear-gradient(180deg,rgb(22 63 109 / 0) 55%,rgb(22 63 109 / .55))}.ds-auth-panel{display:flex;align-items:center;justify-content:center;padding:40px 32px}.ds-auth-inner{width:100%;max-width:380px}.ds-auth-logo{display:block;width:76px;height:76px;margin-bottom:24px;border-radius:50%;background:#fff;border:5px solid #0d4c92;box-sizing:border-box}.ds-auth h1{margin:0 0 6px;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-size:40px;line-height:1.02;font-weight:700;letter-spacing:-.01em;text-transform:uppercase}.ds-auth-sub{margin:0 0 24px;font-size:16px;color:#545d68}.ds-auth-btn{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:60px;padding:0 24px;border:0;border-radius:6px;background:#0d4c92;color:#fff;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-size:19px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.ds-auth-btn:hover{background:#0a3d76}.ds-auth-btn:focus-visible{outline:3px solid #0d4c92;outline-offset:3px}.ds-auth-help{margin:20px 0 0;font-size:14px;color:#545d68}@media(max-width:800px){.ds-auth{grid-template-columns:1fr;grid-template-rows:140px 1fr}.ds-auth-panel{align-items:flex-start;padding:0 20px 24px}.ds-auth-logo{position:relative;z-index:1;width:72px;height:72px;margin:-36px 0 14px;box-shadow:0 2px 10px rgb(15 32 56 / .25)}.ds-auth h1{font-size:32px}.ds-auth-sub{margin-bottom:18px;font-size:15px}}"
     },
     {
       "name": "Status Badge",
@@ -133,16 +177,17 @@
       "name": "Error Message",
       "kind": "custom",
       "refersTo": "error-message",
-      "description": "Red-wash alert banner for failed uploads or recording errors.",
+      "description": "Red-wash alert banner for failed uploads, recording errors and sign-in errors.",
       "html": "<div class=\"ds-error\" role=\"alert\">Connection interrupted. Tap Retry when you are back online.</div>",
       "css": ".ds-error{padding:14px 16px;background:#fdeeee;color:#8f1015;border:1px solid #f2c4c6;border-radius:6px;font-family:Roboto,sans-serif;font-size:15px;line-height:1.55}"
     }
   ],
   "narrative": {
     "northStar": "The Company Clipboard",
-    "overview": "The intake app is a quiet extension of westscottinc.com: a crew tool that looks like WestScott's own job paperwork rather than a generic SaaS form. Every screen opens under the deep navy header band carrying the circular WestScott logo, then sets white working sheets on a cool light-gray ground. Headings, buttons and labels speak in Roboto Condensed bold uppercase, the same voice as the company site; everything a person reads at length is plain Roboto.\n\nThe density is deliberate and roomy for one-handed phone use outdoors: large tap targets (44px minimum, 60px for the send action, 64-68px for the record button), high-contrast ink on white, and a light theme throughout because the primary user is standing in sunlight. Color is sparse. Logo blue does all the action work; brand red is held back entirely for the moment the microphone is live and for things that went wrong. Depth comes from 1px cool-gray rules, not shadows.\n\nIt is \"same brand, app-clean\": calm, task-focused and plainly WestScott, without the marketing site's full photographic look.",
+    "overview": "The intake app is a quiet extension of westscottinc.com: a crew tool that looks like WestScott's own job paperwork rather than a generic SaaS form. Every working screen opens under the deep navy header band carrying the circular WestScott logo, then sets white working sheets on a cool light-gray ground. Headings, buttons and labels speak in Roboto Condensed bold uppercase, the same voice as the company site; everything a person reads at length is plain Roboto.\n\nEvery screen carries only what the task needs: a title, the working sheets, and one obvious action. No intro copy, step numbers, hint labels, footers or repeated reassurance. The density is deliberate and roomy for one-handed phone use outdoors: large tap targets (44px minimum, 52px for text inputs, 60px for the send action, 64-68px for the record button), high-contrast ink on white, and a light theme throughout because the primary user is standing in sunlight. Color is sparse. Logo blue does all the action work; brand red is held back entirely for the moment the microphone is live and for things that went wrong. Depth comes from 1px cool-gray rules, not shadows.\n\nIt is \"same brand, app-clean\": calm, task-focused and plainly WestScott. Photography appears in one place only, the sign-in threshold (sign in and set password), where a WestScott-built interior fills the left half of the screen beside a plain white panel. Once a person is inside the app, the only photos are the ones the crew submits.",
     "keyCharacteristics": [
-      "Deep navy header band with the circular logo on every screen.",
+      "Deep navy header band with the circular logo on every working screen.",
+      "Sign-in and set-password screens: project photo on the left, white panel on the right; on phones a photo band on top with the logo badge overlapping it, fitting one screen with no scroll.",
       "White sheets (cards) on a cool gray ground, separated by 1px rules, never shadows.",
       "Roboto Condensed bold uppercase for headings, buttons, labels and status; Roboto for body.",
       "Squared corners: 4px on small parts, 6px on sheets and the main action.",
@@ -151,24 +196,29 @@
     ],
     "rules": [
       { "name": "The Red Means Live Rule", "body": "Signal red appears only when the microphone is recording, when something failed, or on the hover of a remove control. Never on a primary action, heading, badge, or decoration.", "section": "colors" },
-      { "name": "The One Action Color Rule", "body": "Every tappable action is logo blue (filled or as text). Navy and slate are identity colors, not buttons.", "section": "colors" },
-      { "name": "The Condensed Voice Rule", "body": "Anything that names, labels or commands (headings, buttons, nav, field labels, badges) is Roboto Condensed uppercase with positive tracking. Anything a person reads as a sentence is Roboto in sentence case.", "section": "typography" },
-      { "name": "The Flat Sheet Rule", "body": "No content surface carries a shadow. Box-shadow is only used as a state mark (recording pulse, current-page underline).", "section": "elevation" }
+      { "name": "The One Action Color Rule", "body": "Every tappable action is logo blue (filled or as text). Navy and slate are identity colors, not buttons. Nav items in the band (including the sign-out button) are the one place an action reads in soft white, because they sit on navy.", "section": "colors" },
+      { "name": "The Condensed Voice Rule", "body": "Anything that names, labels or commands (headings, buttons, nav, field labels, badges) is Roboto Condensed uppercase with positive tracking. Anything a person reads as a sentence, or types, is Roboto in sentence case.", "section": "typography" },
+      { "name": "The Flat Sheet Rule", "body": "No content surface carries a shadow. Box-shadow is used as a state mark (recording pulse, current-page underline), with a single exception: the mobile sign-in logo badge that overlaps the photo band.", "section": "elevation" }
     ],
     "dos": [
-      "Do open every screen with the navy header band and the circular WestScott logo.",
-      "Do set headings, buttons, labels, hints and badges in Roboto Condensed uppercase with positive letter-spacing (0.05-0.08em; display headlines at -0.01em).",
+      "Do open every working screen with the navy header band and the circular WestScott logo; the sign-in threshold uses the photo and panel instead.",
+      "Do set headings, buttons, labels and badges in Roboto Condensed uppercase with positive letter-spacing (0.05-0.08em; display headlines at -0.01em).",
       "Do use logo blue (#0d4c92) for every action and the 3px focus outline.",
-      "Do separate surfaces with 1px cool-gray rules and ground/tint/white tonal steps.",
-      "Do keep corners at 4px for small parts and 6px for sheets and the main action; circles only for single-icon controls.",
-      "Do keep tap targets at 44px or larger and the main action full-width at 60px.",
+      "Do separate surfaces with 1px cool-gray rules and ground/white tonal steps.",
+      "Do cut any line that repeats what a heading, button or status already says.",
+      "Do keep corners at 4px for small parts and 6px for sheets and the main action; circles only for single-icon controls and the logo badge.",
+      "Do keep tap targets at 44px or larger, text inputs at 52px, and the main action full-width at 60px.",
+      "Do give every password field the show-password reveal.",
+      "Do keep the sign-in and set-password screens inside one phone screen with no scrolling.",
       "Do stay on the light theme; the primary user is outdoors on a phone.",
       "Do disable the recording pulse under prefers-reduced-motion."
     ],
     "donts": [
       "Don't use red (#c8151c) for anything but the live recording state, errors, and the hover of a remove control.",
       "Don't use the site's pure brand red #ED1C24 for text; it fails contrast.",
-      "Don't put drop shadows on cards, wells, notices or buttons.",
+      "Don't put drop shadows on cards, notices, inputs or buttons; the mobile logo badge is the only shadowed content.",
+      "Don't add intro paragraphs, eyebrows, step numbers, hint labels or a footer to working screens.",
+      "Don't add brand or decorative photography to the working screens; it belongs to the sign-in threshold (submitted project photos are content, not decoration).",
       "Don't round sheets or buttons beyond 6px or use pill shapes for text buttons.",
       "Don't add a dark theme or dark sheets in the working column.",
       "Don't set long-form reading text in condensed uppercase."
