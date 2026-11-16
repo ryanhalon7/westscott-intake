@@ -1,5 +1,5 @@
 import { env } from 'cloudflare:workers';
-import { getChatGPTUser } from '@/app/chatgpt-auth';
+import { getUser } from '@/app/auth';
 import type { StoredSubmission, StoredAsset } from './intake';
 export function storage(){if(!env.DB || !env.BUCKET)throw new Error('Storage is not configured.');return {db:env.DB,bucket:env.BUCKET};}
 export async function authorize(request?:Request){
@@ -7,7 +7,7 @@ export async function authorize(request?:Request){
     const origin=request.headers.get('origin');
     if(origin && origin!==new URL(request.url).origin)throw new Response('Forbidden',{status:403});
   }
-  const user=await getChatGPTUser();if(!user)throw new Response('Sign in required',{status:401});return user;
+  const user=await getUser();if(!user)throw new Response('Sign in required',{status:401});if(user.mustChangePassword)throw new Response('Change your password first',{status:403});return user;
 }
 export async function owned(id:string,ownerId:string){
   const row=await storage().db.prepare('SELECT * FROM submissions WHERE id = ? AND owner_id = ?').bind(id,ownerId).first<StoredSubmission>();

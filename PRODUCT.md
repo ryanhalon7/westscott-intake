@@ -18,7 +18,7 @@ Internal tool. It replaces ad-hoc texting of photos and descriptions with one du
 
 ## Operating Context
 - Mobile web on iPhone and Android, often in sunlight, sometimes on weak connections.
-- Access is gated by Cloudflare Access (emailed one-time codes) for named staff.
+- Sign-in is the app's own branded email + password login (sessions in D1, 30 days). Accounts are created by an admin with a temporary password (scripts/create-user.mjs) that must be changed at first sign-in. There is no self-service signup or reset; resets go through the office.
 - Originals are stored in Cloudflare R2, records in D1; AI transcription and drafting run in a Cloudflare Workflow.
 - Downstream: Google Drive archive and Wix CMS publishing (planned, see ../PLAN.md).
 

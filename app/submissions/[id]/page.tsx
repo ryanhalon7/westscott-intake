@@ -1,4 +1,4 @@
-import {requireChatGPTUser} from '@/app/chatgpt-auth';
+import {requireUser} from '@/app/auth';
 import {owned,files} from '@/lib/server-intake';
 import {SiteHeader} from '@/components/site-chrome';
 import {STATUS,titleOf} from '@/lib/status';
@@ -8,7 +8,7 @@ import {notFound} from 'next/navigation';
 export const dynamic='force-dynamic';
 type Draft={title?:string;location?:string|null;summary?:string;scope_of_work?:string[];challenges?:string|null;completed?:string|null};
 export default async function Detail({params}:{params:Promise<{id:string}>}){
-  const{id}=await params;const user=await requireChatGPTUser(`/submissions/${id}`);
+  const{id}=await params;const user=await requireUser(`/submissions/${id}`);
   let submission;try{submission=await owned(id,user.userId);}catch(e){if(e instanceof Response&&e.status===404)notFound();throw e;}
   let draft:Draft|null=null;try{draft=submission.draft?JSON.parse(submission.draft) as Draft:null;}catch{}
   const assets=await files(id);const audio=assets.find(f=>f.kind==='audio'&&f.uploaded);const photos=assets.filter(f=>f.kind==='photo');

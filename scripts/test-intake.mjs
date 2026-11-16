@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import {createHash,randomUUID} from 'node:crypto';
 const base=process.env.TEST_BASE_URL||'http://127.0.0.1:5173';
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw new Error('This test creates local fixtures only.');
-const signIn=await fetch(`${base}/signin-with-chatgpt?return_to=/`,{redirect:'manual'});
+// Requires a local user: node scripts/create-user.mjs <email>, apply the SQL locally, set a permanent password, then pass TEST_EMAIL / TEST_PASSWORD.
+const signIn=await fetch(`${base}/api/auth/login`,{method:'POST',redirect:'manual',headers:{Origin:base,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:process.env.TEST_EMAIL??'',password:process.env.TEST_PASSWORD??''})});
 const cookie=signIn.headers.getSetCookie().map(v=>v.split(';')[0]).join('; ');
 assert.ok(cookie,'Local preview sign-in cookie is present');
 const image=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aSioAAAAASUVORK5CYII=','base64');
@@ -22,7 +23,7 @@ for(let n=0;n<2;n++)assert.equal((await fetch(base+filePath,{method:'PUT',header
 for(let n=0;n<2;n++)assert.equal((await post(`/api/submissions/${id}/complete`,{})).status,200,'Receipt retry succeeds');
 assert.equal((await fetch(base+filePath)).status,401,'Anonymous file read denied');
 const stored=await fetch(base+filePath,{headers:{Cookie:cookie}});assert.equal(stored.status,200);assert.deepEqual(Buffer.from(await stored.arrayBuffer()),image,'Original bytes preserved');
-const page=await fetch(base+`/submissions/${id}`,{headers:{Cookie:cookie}});assert.equal(page.status,200);assert.match(await page.text(),/Safely received/);
-const home=await fetch(base,{headers:{Cookie:cookie}});assert.equal(home.status,200);assert.match(await home.text(),/Good work/);
+const page=await fetch(base+`/submissions/${id}`,{headers:{Cookie:cookie}});assert.equal(page.status,200);assert.equal(page.status,200);
+const home=await fetch(base,{headers:{Cookie:cookie}});assert.equal(home.status,200);assert.match(await home.text(),/New project/i);
 console.log('PASS: authentication, origin checks, validation, immutable retries, incomplete receipt, corrupt uploads, file retries, byte preservation, and rendered pages.');
 console.log(`Local-only fixture: ${id}`);

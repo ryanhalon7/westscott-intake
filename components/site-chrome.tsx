@@ -1,4 +1,3 @@
-import {chatGPTSignOutPath} from '@/app/chatgpt-auth';
 import {LogOut} from 'lucide-react';
 
 export function SiteHeader({current}:{current?:'new'|'submissions'}){
@@ -11,7 +10,7 @@ export function SiteHeader({current}:{current?:'new'|'submissions'}){
     <nav aria-label="Main">
       <a className="nav-new" href="/" aria-current={current==='new'?'page':undefined}>New</a>
       <a href="/submissions" aria-current={current==='submissions'?'page':undefined}>Submissions</a>
-      <a href={chatGPTSignOutPath('/')} target="_top" aria-label="Sign out"><LogOut size={18} aria-hidden="true"/><span className="nav-label">Sign out</span></a>
+      <form method="post" action="/api/auth/logout"><button type="submit" aria-label="Sign out"><LogOut size={18} aria-hidden="true"/><span className="nav-label">Sign out</span></button></form>
     </nav>
   </div></header>;
 }
